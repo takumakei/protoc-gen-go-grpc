@@ -1,9 +1,9 @@
-ARG GO_VERSION=1.16.4
+ARG GO_VERSION=1.16.7
 
 FROM golang:${GO_VERSION}-buster
 
 ARG GEN_GO_GRPC_VERSION=1.1
-ARG GEN_GRPC_GATEWAY_VERSION=2.4.0
+ARG GEN_GRPC_GATEWAY_VERSION=2.5.0
 
 RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v${GEN_GO_GRPC_VERSION}
 RUN go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway@v${GEN_GRPC_GATEWAY_VERSION} \
@@ -11,8 +11,8 @@ RUN go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway
 
 FROM debian:stable-slim
 
-ARG PROTOC_VERSION=3.17.0
-ARG GEN_GO_VERSION=1.26.0
+ARG PROTOC_VERSION=3.17.3
+ARG GEN_GO_VERSION=1.27.1
 
 RUN apt-get update \
  && export DEBIAN_FRONTEND=noninteractive \
